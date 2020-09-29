@@ -38,7 +38,7 @@ app.layout = html.Div([
     dcc.Input(
         id='num-samples-input',
         type='number',
-        value=5000
+        value=1000,
     ),
     html.Label('Choose classifier:'),
     dcc.Dropdown(
@@ -98,13 +98,14 @@ def generate_explainer_html(submit_n_clicks, reset_n_clicks, case, n_samples, te
         exp = explainer(case,
                         path_to_file=METHODS[case]['file'],
                         text=text,
+                        lowercase=METHODS[case]['lowercase'],
                         num_samples=int(n_samples))
         obj = html.Iframe(
             # Javascript is disabled from running in an IFrame for security reasons
             # Static HTML only!!!
             srcDoc=exp.as_html(),
             width='100%',
-            height='1000px',
+            height='800px',
             style={'border': '2px #d3d3d3 solid'},
         )
     return obj
