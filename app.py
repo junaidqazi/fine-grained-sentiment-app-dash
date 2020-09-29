@@ -4,11 +4,13 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 from lime_explainer import explainer, tokenizer, METHODS
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 app.title = "LIME explainer app for classification models"
 # Serve scripts and CSS locally
 app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True
+# Declare server name
+server = app.server
 
 # ======== App layout ======== 
 app.layout = html.Div([
