@@ -241,7 +241,7 @@ class FastTextExplainer:
 def explainer(method: str,
               path_to_file: str,
               text: str,
-              lowercase:bool,
+              lowercase: bool,
               num_samples: int) -> LimeTextExplainer:
     """Run LIME explainer on provided classifier"""
 
